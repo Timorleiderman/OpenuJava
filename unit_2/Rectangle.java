@@ -27,6 +27,6 @@ public class Rectangle {
         System.out.println("perimeter = " + perimeter);
         System.out.println("area = " + area);
 
-
+        scan.close();
     }
 }

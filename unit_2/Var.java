@@ -23,7 +23,7 @@ public class Var {
         System.out.println("x = " + x);
         System.out.println("d = " + d);
         System.out.println("b = " + b);
-        System.out.println("MIN = " + (double)(100+100+98)/3);
+        System.out.println("MIN = " + MIN);
 
     }
 }

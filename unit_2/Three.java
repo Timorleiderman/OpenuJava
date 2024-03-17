@@ -14,5 +14,7 @@ public class Three {
         System.out.println(three_num / 10 % 10);
         System.out.println(three_num % 10);
 
+        scan.close();
+
     }
 }

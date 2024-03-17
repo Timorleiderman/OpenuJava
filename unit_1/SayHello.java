@@ -9,7 +9,10 @@ public class SayHello
         double d;
         x = scan.nextInt();
         d = scan.nextDouble();
-        // System.out.println(x);
+        
+        System.out.println("x = " + x  + "\nd = " + d);
+
+        scan.close();
     }
     
 }
