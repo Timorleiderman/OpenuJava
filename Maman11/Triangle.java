@@ -2,8 +2,6 @@
 /**
  * The Triangle class prints the perimeter and the area of a triangle if the input is valid
  */
-// TODO: need to reemove the package before submit
-package Maman11;
 import java.util.Scanner;
 
 public class Triangle
@@ -20,19 +18,17 @@ public class Triangle
         int b = scan.nextInt();
         int c = scan.nextInt();
 
-        System.out.println("The lengths of the triangle sides are: " + a + ", " + b + ", " + c);
+        System.out.println("The lengths of the triangle sides are: " 
+            + a + ", " + b + ", " + c);
 
-        if (Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)) != c) {
-            System.out.println("The given three sides don't represent a triangle");
-        }
-
-        else {
-
+        if ( (a + b > c) && (a + c > b) && (b + c > a) ) {
             double p = (a + b + c) / 2;
             double s = Math.sqrt(p * (p - a ) * (p - b) * (p - c));
 
             System.out.println("The perimeter of the triangle is: " + (int)p*2);
             System.out.println("The area of the triangle is: " + s);
+        } else {
+            System.out.println("The given three sides don't represent a triangle");
         }
         scan.close();
 

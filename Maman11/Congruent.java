@@ -1,9 +1,6 @@
 /**
  * The Congruent class prints the lengths of the given triangles and if the 2 triganlges are congruent or not
  */
-
-// TODO: need to reemove the package before submit
-package Maman11;
 import java.util.Scanner;
 
 public class Congruent
@@ -49,6 +46,7 @@ public class Congruent
             " (" + x13 + "," + y13 + ")."
             );
 
+        // Calculate len of each side for first
         double a1 = Math.sqrt( Math.pow( (x11 - x12), 2) + Math.pow( (y11 - y12), 2));
         double b1 = Math.sqrt( Math.pow( (x12 - x13), 2) + Math.pow( (y12 - y13), 2));
         double c1 = Math.sqrt( Math.pow( (x11 - x13), 2) + Math.pow( (y11 - y13), 2));
@@ -60,6 +58,8 @@ public class Congruent
             " (" + x22 + "," + y22 + ")" +
             " (" + x23 + "," + y23 + ")."
             );
+
+        // Calculate len of each side for second
         double a2 = Math.sqrt( Math.pow( (x21 - x22), 2) + Math.pow( (y21 - y22), 2));
         double b2 = Math.sqrt( Math.pow( (x22 - x23), 2) + Math.pow( (y22 - y23), 2));
         double c2 = Math.sqrt( Math.pow( (x21 - x23), 2) + Math.pow( (y21 - y23), 2));
