@@ -11,13 +11,13 @@ public class Rectangle {
         int area;
         int perimeter;
         // scanner for input
-        Scanner scan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         // interact with user
         System.out.println("Enter height:");
-        height = scan.nextInt();
+        height = scanner.nextInt();
         System.out.println("Enter width:");
-        width = scan.nextInt();
+        width = scanner.nextInt();
 
         // calculate
         perimeter = 2*height + 2*width;
