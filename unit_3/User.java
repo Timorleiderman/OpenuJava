@@ -1,0 +1,20 @@
+package unit_3;
+
+public class User {
+    public static void main(String[] args) { //create new Box
+    Box box1 = new Box(4, 3, 2);
+    // print the box 
+    System.out.println("box1 = " + box1);
+
+    Box box2 = new Box(0, -1, -7);
+    // print the new box, all attributes should be 1 
+    System.out.println("box2 = " + box2);
+
+    box2.changeSize(3);
+    System.out.println("box2 after changeSize(3) = " + box2);
+
+    System.out.println("volume of box1 = " + box1.calcVolume());
+    System.out.println("surface of box1 = " + box1.calcSurface());
+    } 
+
+}
