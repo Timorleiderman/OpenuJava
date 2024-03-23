@@ -2,6 +2,10 @@ package unit_3;
 
 public class User {
     public static void main(String[] args) { //create new Box
+    
+    Car car1 = new Car("BMW", 2023, 9999);
+    System.out.println("This is a Car " + car1);
+    
     Box box1 = new Box(4, 3, 2);
     // print the box 
     System.out.println("box1 = " + box1);
