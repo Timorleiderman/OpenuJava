@@ -20,5 +20,7 @@ public class Square {
           else
 
                System.out.println("Not Square");
+          
+               scanner.close();
      }
 }

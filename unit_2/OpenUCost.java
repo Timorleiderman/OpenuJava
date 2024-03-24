@@ -17,7 +17,7 @@ public class OpenUCost  {
           final double SOLDIER_DISCOUNT = 0.1;
 
           final int INTENCE = 301;
-          final int SUMMER = 286;
+          // final int SUMMER = 286;
 
           final int SECURITY = 59;
 
@@ -57,5 +57,7 @@ public class OpenUCost  {
 
           
           System.out.println(pay);
+
+          scanner.close();
      }     
 }

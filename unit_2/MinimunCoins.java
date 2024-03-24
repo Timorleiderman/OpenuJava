@@ -22,6 +22,7 @@ public class MinimunCoins  {
            price = price % 1;        
            System.out.println("We need " + amount + " coins of 1 NIS");    
 
+           scanner.close();
      }     
 
 }

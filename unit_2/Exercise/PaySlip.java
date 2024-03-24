@@ -4,19 +4,19 @@ import java.util.Scanner;
 
 public class PaySlip {
     public static void main (String [] args) {
-        int twoPi = 2*3.14159;  /* holds the value of two times pi */
+        // int twoPi = 2*3.14159;  /* holds the value of two times pi */
         Scanner scanner = new Scanner(System.in);
         System.out.println (/* 8.0 + 5 */ -6 + 3/*5*//1 ); //*+9*/ -2;
 
         System.out.println("Enter base salary working hours and day of week:");
-        int a, b, c;
+        // int a, b, c;
 
-        double x, y, z;
+        // double x, y, z;
 
-        a = c%5;
-        b = x/7;
-        b = c*z;
-        int ilovceU!;
+        // a = c%5;
+        // b = x/7;
+        // b = c*z;
+        // int ilovceU!;
         
 
         int base = scanner.nextInt();

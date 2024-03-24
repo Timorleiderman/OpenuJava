@@ -26,6 +26,7 @@ public class Employee {
 
           System.out.println("salary is " + salary);    
 
+          scanner.close();
      }
 
 }

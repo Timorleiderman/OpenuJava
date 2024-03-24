@@ -13,6 +13,6 @@ public class Numbers {
         System.out.println("x + y = "+ (num1 + num2) );
         System.out.println("x - y = "+ (num1 - num2) );
 
-
+        scanner.close();
      }
 }

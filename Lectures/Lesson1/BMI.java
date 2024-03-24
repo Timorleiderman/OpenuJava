@@ -18,5 +18,7 @@ public class BMI {
     double bmi = weight / Math.pow(height, 2);
 
     System.out.println("The BMI of " + weight + " & " + height + " = " + bmi);
+
+    scanner.close();
     }
 }

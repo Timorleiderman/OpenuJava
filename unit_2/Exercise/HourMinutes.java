@@ -40,5 +40,7 @@ public class HourMinutes {
         }
         else
             System.out.println("input is not correct");
+
+            scanner.close();
     }
 }

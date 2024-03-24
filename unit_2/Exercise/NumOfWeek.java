@@ -40,5 +40,7 @@ public class NumOfWeek {
         else {
             System.out.println(days + " invalid number for days");
         }
+
+        scan.close();
     }
 }

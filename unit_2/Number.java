@@ -17,5 +17,7 @@ public class Number {
         else
             num*=3; 
         System.out.println("The new number is: " + num);
+
+        scanner.close();
       }
 }

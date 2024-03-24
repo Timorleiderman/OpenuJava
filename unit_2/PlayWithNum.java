@@ -19,6 +19,8 @@ public class PlayWithNum {
                 System.out.println("big");
           else
                 System.out.println("very big");
+      
+            scan.close();
 
      }
 
