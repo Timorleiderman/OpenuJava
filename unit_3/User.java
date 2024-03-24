@@ -19,6 +19,10 @@ public class User {
 
     System.out.println("volume of box1 = " + box1.calcVolume());
     System.out.println("surface of box1 = " + box1.calcSurface());
+
+    Car car3 = new Car( car1);
+    System.out.println("This is a copy Car " + car3);
+    
     } 
 
 }

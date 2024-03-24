@@ -16,6 +16,19 @@ public class Car {
         _year = year;
         _id = id;
     }
+    // constructor with 2 inputs
+    public Car(String factory, long id) {
+        _factory = factory;
+        _year = DEF_YEAR;
+        _id = id;
+    }
+
+    // copy constructor
+    public Car( Car car) {
+        _factory = car._factory;
+        _id = car._id;
+        _year = car._year;
+    }
 
     public String toString() {
         return  "( " + _factory + " , " + _year + " , " + _id + " )";
