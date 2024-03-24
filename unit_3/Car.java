@@ -33,4 +33,30 @@ public class Car {
     public String toString() {
         return  "( " + _factory + " , " + _year + " , " + _id + " )";
     }
+
+    public String getFactory() {
+        return _factory;
+    }
+
+    public void setFactory(String factory) {
+        _factory = factory;
+    }
+
+    public int getYear() {
+        return _year;
+    }
+
+    public void setYear(int year) {
+        if (1000 <= year && year < 10000) 
+            _year = year;
+    }
+
+    public long getId() {
+        return _id;
+    }
+
+    public void setId(long id) {
+        _id = id;
+    }
+        
 }

@@ -22,6 +22,14 @@ public class User {
 
     Car car3 = new Car( car1);
     System.out.println("This is a copy Car " + car3);
+
+
+    System.out.println("box1 width = " + box1.getWidth());
+    box1.setWidth(-5);
+    System.out.println("box1 width after setWidth(-5) = " + box1.getWidth());
+
+    box1.setWidth(10);
+    System.out.println("box1 width after setWidth(10)=" + box1.getWidth());
     
     } 
 
