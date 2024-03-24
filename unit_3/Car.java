@@ -10,7 +10,7 @@ public class Car {
     public Car(String factory, int year, long id) {
         _factory = factory;
 
-        if (year < 1000 && year > 9999) {
+        if (year < 1000 || year > 9999) {
             year = DEF_YEAR;
         }
         _year = year;
