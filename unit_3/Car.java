@@ -62,4 +62,12 @@ public class Car {
     public boolean equals(Car other) {
         return _id == other._id && _year == other._year && _factory.equals(other._factory);
     }
+
+    public boolean older(Car c) {
+        return _year < c._year;
+    }
+
+    public boolean younger(Car c) {
+        return c.older(this);
+    }
 }

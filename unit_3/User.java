@@ -52,6 +52,15 @@ public class User {
     System.out.println("acc1 == acc2 " + (acc1 == acc2));
     System.out.println("acc1.equals(acc2) " + acc1.equals(acc2));
 
+
+    System.out.println("b10 volume = " + b10.calcVolume());
+    System.out.println("b12 volume = " + b12.calcVolume());
+    System.out.println("b13 volume = " + b13.calcVolume());
+    System.out.println("b10.bigger(b12) = " + b10.bigger(b12));
+    System.out.println("b10.bigger(b13) = " + b10.bigger(b13));
+    System.out.println("b13.bigger(b10) = " + b13.bigger(b10));
+    System.out.println("b10.smaller(b13) = " + b10.smaller(b13));
+
     } 
 
 }

@@ -68,7 +68,10 @@ public class Box {
             _length += deltaLength;
             _height += deltaHeight;
         }
-
+        /**
+         * 
+         * @return volume of box
+         */
         public int calcVolume() {
             return _height * _width * _length;
         }
@@ -119,4 +122,31 @@ public class Box {
         public boolean equals(Box other) {
             return _length == other._length && _width == other._width && _height == other._height;
         }
+
+        /**
+         * 
+         * @param other Box
+         * @return if bigger
+         */
+        public boolean bigger(Box other) {
+            return calcVolume() > other.calcVolume();
+        }
+
+        /**
+         * 
+         * @param other Box
+         * @return if smaller
+         */
+        public boolean smaller(Box other) {
+            return other.bigger(this);
+        }
+
+        public boolean longer(Box other) {
+            return _length > other._length;
+        }
+
+        public boolean shorter(Box other) {
+            return other.longer(this);
+        }
+
 }
