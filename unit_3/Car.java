@@ -58,5 +58,8 @@ public class Car {
     public void setId(long id) {
         _id = id;
     }
-        
+    
+    public boolean equals(Car other) {
+        return _id == other._id && _year == other._year && _factory.equals(other._factory);
+    }
 }

@@ -31,6 +31,27 @@ public class User {
     box1.setWidth(10);
     System.out.println("box1 width after setWidth(10)=" + box1.getWidth());
     
+    Box b10 = new Box(5, 7, 4);
+    Box b11 = b10;
+    Box b12 = new Box(5, 7, 4);
+    Box b13 = new Box(3, 6, 9);
+
+    System.out.println("(b10 == b11) = " + (b10 == b11));
+    System.out.println("b10.equals(b11) = " + b10.equals(b11));
+    System.out.println("(b10 == b12) = " + (b10 == b12));
+    System.out.println("b10.equals(b12) = " + b10.equals(b12));
+    System.out.println("b12.equals(b13) = " + b12.equals(b13));
+
+
+    System.out.println("car1 == car3 " + (car3 == car1));
+    System.out.println("car1.equals(car3) " + car1.equals(car3));
+
+    Account acc1 = new Account("AAA","BBB",123,1000);
+    Account acc2 = new Account("AAA","BBB",123,1000);
+
+    System.out.println("acc1 == acc2 " + (acc1 == acc2));
+    System.out.println("acc1.equals(acc2) " + acc1.equals(acc2));
+
     } 
 
 }

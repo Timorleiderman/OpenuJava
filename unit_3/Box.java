@@ -116,4 +116,7 @@ public class Box {
                 _height = height;
             }
 
+        public boolean equals(Box other) {
+            return _length == other._length && _width == other._width && _height == other._height;
+        }
 }

@@ -55,4 +55,11 @@ public class Account {
             _accountNum = accNum;
     }
 
+    public boolean equals( Account other) {
+        return (_accountNum == other._accountNum) && 
+                (_balance == other._balance) &&
+                (_bank.equals(other._bank)) &&
+                (_name.equals(other._name));
+    }
+
 }
