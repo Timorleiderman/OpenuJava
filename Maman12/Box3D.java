@@ -1,5 +1,7 @@
 package Maman12;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 public class Box3D {
     private Point3D _base;
     private int _length;
@@ -55,7 +57,7 @@ public class Box3D {
     /**
      * @return the length of the box
      */
-    public int getLenght() {
+    public int getLength() {
         return _length;
     }
 
@@ -81,15 +83,6 @@ public class Box3D {
     }
 
     /**
-     * set the lenght of the box
-     * @param num the lenght of the box
-     */
-    public void getLength(int num) {
-        if (num > 0)
-            _length = num;
-    }
-
-    /**
      * set the height of the box
      * @param num the height of the box
      */
@@ -105,6 +98,15 @@ public class Box3D {
     public void setWidth(int num) {
         if (num > 0)
             _width = num;
+    }
+
+    /**
+     * set the length of the box
+     * @param num the length of the box
+     */
+    public void setLength(int num) {
+        if (num > 0)
+            _length = num;
     }
 
     /** 
@@ -145,10 +147,66 @@ public class Box3D {
         return new Point3D(_base._x - _length, _base._y + _width, _base._z + _height);
     }
 
+    /**
+     * 
+     * @return The center of the Box3D
+     */
     public Point3D getCenter() {
-        
-        return new Point3D();
+        double x = _base._x - (_length / 2.0);
+        double y = _base._y + (_width / 2.0);
+        double z = _base._z + (_height / 2.0);
+
+        return new Point3D(x, y, z);
     }
+
+    /**
+     *  calculate the distance between the centers of 2 boxs
+     * @param other Box3D other box 
+     * @return the distance between the 2 Box3D objects
+     */
+    public double distance(Box3D other) {
+        return this.getCenter().distance(other.getCenter());
+    }
+
+    /**
+     * @return the volume of the box
+     */
+    public int getVolume() {
+        return _width * _height * _length;
+    }
+
+    /**
+     * @param other Box3D to compare
+     * @return true if the current box is larger in size then the other
+     */
+    public boolean isLargerCapacity(Box3D other) {
+        return this.getVolume() > other.getVolume();
+    }
+
+    /**
+     * checi if it is possible to put other box inside this box
+     * @param other Box3D to check if it fits inside
+     * @return true if other box can fir inside this box
+     */
+    public boolean contains(Box3D other) {
+        return other._length < _length && other._height < _height && other._width < _width;
+    }
+
+    /**
+     * check if the box is above the other box
+     * @param other Box3D to check
+     * @return true if the box is above the other
+     */
+    public boolean isAbove(Box3D other) {
+        return other.getUpRightBackPoint().isUnder(this._base);
+    }
+    /**
+     * @return surface area of the box
+     */
+    public int getSurfaceArea() {
+        return 2 * ( _width * _height + _width * _length + _height * _length);
+    }
+
     /**
      * @return String represantaion of the box
      */
