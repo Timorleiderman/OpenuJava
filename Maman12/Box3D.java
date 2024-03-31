@@ -1,7 +1,3 @@
-package Maman12;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
 public class Box3D {
     private Point3D _base;
     private int _length;
