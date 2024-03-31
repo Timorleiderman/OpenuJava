@@ -18,11 +18,10 @@ public class Congruent
         System.out.println ("Enter the second vertex (2 real numbers)");
         double x12 = scan.nextDouble();
         double y12 = scan.nextDouble();
-        
+
         System.out.println ("Enter the third vertex (2 real numbers)");
         double x13 = scan.nextDouble();
         double y13 = scan.nextDouble();
-
 
         System.out.println ("Please enter the coordinates of the 3 " + 
             "vertices of the second triangle:");
@@ -34,30 +33,27 @@ public class Congruent
         System.out.println ("Enter the second vertex (2 real numbers)");
         double x22 = scan.nextDouble();
         double y22 = scan.nextDouble();
-        
+
         System.out.println ("Enter the third vertex (2 real numbers)");
         double x23 = scan.nextDouble();
         double y23 = scan.nextDouble();
-
 
         // Calculate len of each side for first
         double a1 = Math.sqrt( Math.pow( (x11 - x12), 2) + Math.pow( (y11 - y12), 2));
         double b1 = Math.sqrt( Math.pow( (x12 - x13), 2) + Math.pow( (y12 - y13), 2));
         double c1 = Math.sqrt( Math.pow( (x11 - x13), 2) + Math.pow( (y11 - y13), 2));  
-        
+
         // Calculate len of each side for second
         double a2 = Math.sqrt( Math.pow( (x21 - x22), 2) + Math.pow( (y21 - y22), 2));
         double b2 = Math.sqrt( Math.pow( (x22 - x23), 2) + Math.pow( (y22 - y23), 2));
         double c2 = Math.sqrt( Math.pow( (x21 - x23), 2) + Math.pow( (y21 - y23), 2));
-        
-        
 
         System.out.println("The first triangle is" + 
             " (" + x11 + "," + y11 + ")" +
             " (" + x12 + "," + y12 + ")" +
             " (" + x13 + "," + y13 + ")."
             );
-            
+
         System.out.println("Its lengths are " + a1 +", " + b1 + ", " + c1 +".");
         
         System.out.println("The second triangle is" + 
@@ -81,4 +77,4 @@ public class Congruent
         scan.close();
 
     } // end of method main
-} //end of class Triangle 
+} //end of class Triangle
