@@ -1,18 +1,16 @@
- 
-
-
 /**
  * This class represents a Point3D Object
  * 
  * @author (Timor Leiderman) 
  * @version (2024)
  */
+
 public class Point3D {
     double _x;
     double _y;
     double _z;
 
-    private final int ZERO = 0;
+    private final int DEFAULT_LOCATION = 0;
 	/**
 	* Constructs and initializes a Point3D from the specified xyz coordinates.
 	* @param x the x cordinate
@@ -28,9 +26,9 @@ public class Point3D {
      * Constructs and initializes a Point3D to (0,0,0).
      */
     public Point3D() {
-        _x = ZERO;
-        _y = ZERO;
-        _z = ZERO;
+        _x = DEFAULT_LOCATION;
+        _y = DEFAULT_LOCATION;
+        _z = DEFAULT_LOCATION;
     }
     /**
 	* Constructs and initializes a Point3D from the specified Point3D.
@@ -41,23 +39,21 @@ public class Point3D {
         _y = other._y;
         _z = other._z;
     }
-
-    /** 
+    /**
      * returns the x coordinate
      * @return the value of the x coordinate
      */
     public double getX() {
         return _x;
     }
-
-    /** 
+    /**
      * returns the y coordinate
      * @return the value of the y coordinate
      */
     public double getY() {
         return _y;
     }
-    /** 
+    /**
      * returns the z coordinate
      * @return the value of the z coordinate
      */
@@ -85,7 +81,6 @@ public class Point3D {
     public void setZ(double num) {
         _z = num;
     }
-    
     /**
      * Determines whether or not two points are equal.
      * @param other a Point3D object to be compared with this Point3D
@@ -94,7 +89,6 @@ public class Point3D {
     public boolean equals(Point3D other) {
         return _x == other._x && _y == other._y && _z == other._z;
     }
-
     /**
      * Checks if this point is above the other point. (z axis)
      * @param other The point to check whether this point is above it
@@ -111,7 +105,6 @@ public class Point3D {
     public boolean isUnder(Point3D other){
         return other.isAbove(this);
     }
-
     /**
      * Checks if this point is to the left of the other point. (y axis)
      * @param other The point to check whether this point is left of it
@@ -120,7 +113,6 @@ public class Point3D {
     public boolean isLeft(Point3D other){
         return _y < other._y;
     }
-
     /**
      * Checks if this point is to the right of the other point. (y axis)
      * @param other The point to check whether this point is right of it
@@ -129,7 +121,6 @@ public class Point3D {
     public boolean isRight(Point3D other){
         return other.isLeft(this);
     }
-    
     /**
      * Checks if this point is behind the other point. (x axis)
      * @param other  The point to check whether this point behind it
@@ -138,7 +129,6 @@ public class Point3D {
     public boolean isBehind(Point3D other){
         return _x < other._x;
     }
-
     /**
      * Checks if this point is in front of the other point. (x axis)
      * @param other Point3D to compare the x cordiante
@@ -147,7 +137,6 @@ public class Point3D {
     public boolean isInFrontOf(Point3D other){
         return other.isBehind(this);
     }
-
     /**
      * Moves the Point3D in location (x,y,z), by dx along the x axis, by dy along the y axis and dz along the z axis so that it now represents the Point3D in the following 3D coordintes (x+dx,y+dy,z+dz).
      * @param dx the addtion for coordinate x value
@@ -159,26 +148,18 @@ public class Point3D {
         _y += dy;
         _z += dz;
     }
-
     /**
      * Returns the distance between this point and other point p.
      * @param p the other point
      * @return he distance between the two points
      */
     public double distance(Point3D p) {
-
-        double dx = Math.pow(_x - p._x, 2);
-        double dy = Math.pow(_y - p._y, 2);
-        double dz = Math.pow(_z - p._z, 2);
-
-        return Math.sqrt(dx + dy + dz);
+        return Math.sqrt(Math.pow(_x - p._x, 2) + Math.pow(_y - p._y, 2) + Math.pow(_z - p._z, 2));
     }
-    
     /**
      * Returns a string representation of this Point3D.
      */
     public String toString() {
         return "(" + _x + "," + _y + "," + _z + ")";
     }
-
 }
