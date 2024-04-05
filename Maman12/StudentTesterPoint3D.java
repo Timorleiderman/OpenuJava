@@ -13,6 +13,11 @@ public class StudentTesterPoint3D {
         System.out.println("Calling Point3D default constructor and getters...");
         Point3D p1 = new Point3D();
 
+        Point3D p0_1 = new Point3D(-1.5, -2, 2);
+        if ( p0_1.getX() != -1.5 || p0_1.getY() != -2 || p0_1.getZ() != 2) {
+            System.out.println("\tno correct basic");
+        }
+
         double x = p1.getX();
         double y = p1.getY();
         double z = p1.getZ();
@@ -74,6 +79,7 @@ public class StudentTesterPoint3D {
             System.out.println("\tEither getZ or setZ are not correct");
         }
 
+        
         System.out.println("Calling toString...");
 
         if (!p1.toString().equals("(1.0,2.0,3.0)")) {
