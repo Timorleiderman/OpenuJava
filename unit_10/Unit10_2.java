@@ -4,7 +4,7 @@ public class Unit10_2 {
 
     public static void main(String [] args) {
         
-        System.out.println(endWithZ("abzcdef"));
+        System.out.println(getNumber("abzcdeaa1234af"));
         // System.out.println(markChar("abcdef", 'a'));
     }
 
@@ -51,6 +51,39 @@ public class Unit10_2 {
 
             return first + res ;
 
+        }
+
+        public static String startWithA(String str) {
+            if (str.length() == 0) 
+                return str;
+
+            char last = str.charAt(str.length() - 1);
+            String rest = startWithA( str.substring(0, str.length() - 1) );
+
+            if (last == 'a' || last == 'A')
+                return last + rest;
+
+            return rest + last;
+
+        }
+
+        public static String getNumber(String str) {
+            if (str.length() == 0){
+                return str;
+            }
+
+            char first = str.charAt(0);
+            char last = str.charAt(str.length() - 1);
+
+            boolean isFirstDig = (first >= '0' && first <= '9');
+            boolean isLastDig = (last >= '0' && last <= '9');
+            if (isFirstDig && isLastDig)
+                return str;
+
+            if (isLastDig)
+                return getNumber(str.substring(1));
+
+            return getNumber(str.substring(0, str.length() - 1));
         }
 }
 
