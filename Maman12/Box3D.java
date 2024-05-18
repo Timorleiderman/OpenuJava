@@ -88,7 +88,7 @@ public class Box3D {
      * @return the base point of the box
      */
     public Point3D getBase(){
-        return _base;
+        return new Point3D(_base);
     }
 
     /**
