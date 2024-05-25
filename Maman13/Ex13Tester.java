@@ -3,7 +3,9 @@ import java.util.Random;
 public class Ex13Tester
 {
     public static void main(String[] args){
+
         System.out.println ("********** Question 1 **********\n");
+
 
         int [] arr1 = createArrayWithSingleElement(1000, 900);
         System.out.println("O(log n)");
@@ -14,12 +16,18 @@ public class Ex13Tester
         System.out.println(Ex13.waterVolume(arr2));
 
 
-        int n = 4;
-        Password p = new Password(n);
-        String getPassword = p.getPassword();
-        System.out.println(getPassword);
-        String findPassword = Ex13.findPassword(p, n);
-        System.out.println(findPassword);
+        System.out.println ("********** Question 3 **********\n");
+        int n = 5;
+        for (int i=0; i<990000; i++) {
+            
+            Password p = new Password(n);
+            String getPassword = p.getPassword();
+            // System.out.println(getPassword);
+            String findPassword = Ex13.findPassword(p, n);
+            // System.out.println(findPassword);
+            
+        }
+        System.out.println("Done!!!");
     }
 
 
@@ -45,7 +53,6 @@ public class Ex13Tester
         
         return arr;
     }
-
 
 
 }
