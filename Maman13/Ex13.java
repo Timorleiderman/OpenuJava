@@ -1,25 +1,10 @@
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
 public class Ex13 {
+    
+    private static final int ALPHABET_LENGTH = 24;
     /**
-     *  iterate over all elements worst case it will iterate all the elemtns
-     *  int the best case it will iterate over the first two
-     *  Time complexity O(n)
-     *  Space complexity O(1)
-     * @param a non empty input array with one integer that not appear twice in a row
-     * @return the single int that was found
-     */
-    // public static int findSingle(int [] a) {
-       
-    //     for (int i = 0; i < a.length - 1; i += 2) {
-    //         if (a[i] != a[i + 1]) {
-    //             return a[i];
-    //         }
-    //     }
-    //     return a[a.length - 1];
-    // }
-
-    /**
+     * ********** Question 1 **********
      *  like binery search compare even index if the even index and nex are the same the number is on the right
      *  if the even index and the next are not the same the number is on the left
      *  Time complexity O(log n)
@@ -46,8 +31,28 @@ public class Ex13 {
         
         return a[left];
     }
+    /**
+     * ********** Question 1 **********
+     *  iterate over all elements worst case it will iterate all the elemtns
+     *  int the best case it will iterate over the first two
+     *  Time complexity O(n)
+     *  Space complexity O(1)
+     * @param a non empty input array with one integer that not appear twice in a row
+     * @return the single int that was found
+     */
+    // public static int findSingle(int [] a) {
+       
+    //     for (int i = 0; i < a.length - 1; i += 2) {
+    //         if (a[i] != a[i + 1]) {
+    //             return a[i];
+    //         }
+    //     }
+    //     return a[a.length - 1];
+    // }
+
 
     /**
+     * ********** Question 2 **********
      * this function will iterate for each tower finding the max tower to the left and to the right
      * then i will add to the total water sum the minimal tower found less the the hight of the current tower
      *  Time complexity O(n*n) = O(n^2)
@@ -89,7 +94,24 @@ public class Ex13 {
     }
 
     public static String findPassword(Password p, int length){
-        return "";
+        return findPassword(p, length, generatePassword(length, 0), 0);
+    }
+
+    private static String findPassword(Password p, int length, String guess, int idx){
+
+        if (p.isPassword(guess)) 
+            return guess;
+
+        return findPassword(p, length, generatePassword(length, idx+1), idx+1);
+    }
+
+    private static String generatePassword(int length, int idx) {
+
+        if (length<= 0)
+            return "";
+
+        char suffix = (char) ('a' + idx % ALPHABET_LENGTH);
+        return generatePassword(length - 1, idx / ALPHABET_LENGTH) + suffix;
     }
 
 }   
