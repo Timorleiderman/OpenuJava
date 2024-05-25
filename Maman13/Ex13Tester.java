@@ -13,6 +13,13 @@ public class Ex13Tester
         int [] arr2 = {2, 1, 1, 4, 1, 1, 2, 3};
         System.out.println(Ex13.waterVolume(arr2));
 
+
+        int n = 4;
+        Password p = new Password(n);
+        String getPassword = p.getPassword();
+        System.out.println(getPassword);
+        String findPassword = Ex13.findPassword(p, n);
+        System.out.println(findPassword);
     }
 
 
