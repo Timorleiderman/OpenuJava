@@ -3,7 +3,7 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 public class Ex13 {
     
     private static final int ALPHABET_LENGTH = 26;
-    private static final int RECRUSION_DEPTH = 1200;
+    private static final int RECRUSION_DEPTH = 1024;
     private static final boolean BEEN_HERE = false;
     /**
      * ********** Question 1 **********
@@ -163,7 +163,7 @@ public class Ex13 {
      * @return password String found
      */
     public static String findPassword(Password p, int length){
-        return findPassword(p, length, 0, -1);
+        return findPassword(p, length, 0);
     }
 
     /**
@@ -182,12 +182,13 @@ public class Ex13 {
      * @param resIdx - index of the found Password string
      * @return password String found
      */
-    private static String findPassword(Password p, int length, int idx, int resIdx) {
-        if (resIdx != -1)
-            return generatePassword(length, resIdx);
-
-        int newResIdx = findPassword(p, length, generatePassword(length, idx), idx, 0);
-        return findPassword(p, length, idx + RECRUSION_DEPTH + 1, newResIdx);
+    private static String findPassword(Password p, int length, int idx) {
+        
+        String guess = findPassword(p, length, idx, 0);
+        if (guess.equals("0"))
+            return findPassword(p, length, idx + RECRUSION_DEPTH);
+        else
+            return guess;  
     }
 
     /**
@@ -199,18 +200,18 @@ public class Ex13 {
      * @param cnt - counter to protect agains stuck overflow
      * @return index of the correct string
      */
-    private static int findPassword(Password p, int length, String guess, int idx, int cnt) {
-        // System.out.println("GUESS: " + guess + "  needs + " + p.getPassword());
+    private static String findPassword(Password p, int length, int idx, int depth) {
+        
+        
+        if (depth > RECRUSION_DEPTH)
+            return "0";
+            
+        String guess = generatePassword(length, idx);
         
         if (p.isPassword(guess)) 
-            return idx;
-
-        if (cnt >= RECRUSION_DEPTH)
-            return -1;
-        
-        String nextGuess = generatePassword(length, idx + 1);
-        return findPassword(p, length, nextGuess, idx+1, cnt+1);
-
+            return guess;
+    
+        return findPassword(p, length, idx+1, depth+1);
     }
 
     /**
