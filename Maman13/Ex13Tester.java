@@ -29,14 +29,14 @@ public class Ex13Tester
             
         }
 
-        System.out.println("********** Question 4**********\n");
+        System.out.println("********** Question 4 **********\n");
         System.out.println();
         boolean[][] mat = {
                 {true,false,false,false,true},
-                {false,true,true,true,false},
-                {false,false,true,true,false},
-                {true,false,false,false,false},
-                {true,true,false,false,false},
+                {false,true,false,true,false},
+                {true,true,false,true,false},
+                {true,false,true,false,false},
+                {true,false,true,true,true},
             };
 
         System.out.println("Number of Regions: " + Ex13.cntTrueReg(mat));
