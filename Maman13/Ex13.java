@@ -96,7 +96,7 @@ public class Ex13 {
      * @return number of regions
      */
     public static int cntTrueReg (boolean [][] a){
-        return cntTrueReg(a, 0, 0, true, 0);
+        return cntTrueReg(a, 0, 0, 0);
     }
 
     /**
@@ -111,50 +111,44 @@ public class Ex13 {
      * @param count the number of regions
      * @return count
      */
-    private static int cntTrueReg (boolean [][] a, int row, int col, boolean countFlag, int count){
+    private static int cntTrueReg (boolean [][] a, int row, int col, int count){
 
-        if (row == a.length-1 && col == a[0].length -1)
-            return (a[row][col] && countFlag) ? 1: 0;
-        
-        if (a[row][col]) {
-
-            a[row][col] = BEEN_HERE;
-
-            if (countFlag) {
-                // count the index
-                count++;
-            }
+        if ( row <= a.length-1 && col <= a[0].length -1 && a[row][col] ) {
+            cleanNeighbors(a, row, col);
+            count++;
             
-            // look up and dont count if connected
-            if (row - 1 >= 0 && a[row - 1][col]) {
-                return cntTrueReg(a, row - 1, col, false, count);
-            }
-            // look down and dont count if connected
-            if (row + 1 < a.length - 1 && a[row + 1][col]) {
-                return cntTrueReg(a, row + 1, col, false, count);
-            }
-            // look right and dont count if connected
-            if (col - 1 >= 0 && a[row][col - 1]) {
-                return cntTrueReg(a, row, col - 1, false, count);
-            }
-            // look left and dont count if connected
-            if (col + 1 < a[0].length - 1 && a[row][col + 1]) {
-                return cntTrueReg(a, row, col + 1,  false, count);
-            }
         }
-
         if (row < a.length  && col < a[0].length - 1) {
             // jump to next cell in the row
-            return count + cntTrueReg(a, row, col+1, true, 0);
-        }
-        if (col == a[0].length - 1) {
+            return count + cntTrueReg(a, row, col+1, 0);
+        } else if (col == a[0].length - 1) {
             // jump to next row and start from first cell
-            return count + cntTrueReg(a, row+1, 0, true, 0);
+            return count + cntTrueReg(a, row+1, 0, 0);
         }
         
         return count;
     }
 
+    private static void cleanNeighbors(boolean [][] a, int row, int col) {
+
+        a[row][col] = BEEN_HERE;
+        // look up and dont count if connected
+        if (row - 1 >= 0 && a[row - 1][col]) {
+            cleanNeighbors(a, row - 1, col);
+        }
+        // look down and dont count if connected
+        if (row + 1 < a.length && a[row + 1][col]) {
+            cleanNeighbors(a, row + 1, col);
+        }
+        // look right and dont count if connected
+        if (col - 1 >= 0 && a[row][col - 1]) {
+            cleanNeighbors(a, row, col - 1);
+        }
+        // look left and dont count if connected
+        if (col + 1 < a[0].length && a[row][col + 1]) {
+            cleanNeighbors(a, row, col + 1);
+        }
+    }
     /**
      * it will call the private method to recrusivvly find the password
      * 
