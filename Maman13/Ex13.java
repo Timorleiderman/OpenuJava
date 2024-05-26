@@ -3,7 +3,8 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 public class Ex13 {
     
     private static final int ALPHABET_LENGTH = 26;
-    private static final int RECRUSION_DEPTH = 4000;
+    private static final int RECRUSION_DEPTH = 1200;
+    private static final boolean BEEN_HERE = false;
     /**
      * ********** Question 1 **********
      *  like binery search compare even index if the even index and nex are the same the number is on the right
@@ -90,7 +91,43 @@ public class Ex13 {
     }
 
     public static int cntTrueReg (boolean [][] a){
-        return 1;
+        return cntTrueReg(a, 0, 0, true, 0);
+    }
+
+    public static int cntTrueReg (boolean [][] a, int row, int col, boolean countFlag, int count){
+
+        System.out.println("This is row,col" + row + "," + col);
+
+        if (row == a.length-1 && col == a[0].length -1)
+            return (a[row][col] && countFlag) ? 1: 0;
+        
+        if (a[row][col]) {
+
+            a[row][col] = BEEN_HERE;
+
+            if (countFlag)
+                count++;
+
+            if (row - 1 >= 0 && a[row - 1][col]) {
+                return cntTrueReg(a, row - 1, col, false, count);
+            }
+            if (row + 1 < a.length - 1 && a[row + 1][col]) {
+                return cntTrueReg(a, row + 1, col, false, count);
+            }
+            if (col - 1 >= 0 && a[row][col - 1]) {
+                return cntTrueReg(a, row, col - 1, false, count);
+            }
+            if (col + 1 < a[0].length - 1 && a[row][col + 1]) {
+                return cntTrueReg(a, row, col + 1,  false, count);
+            }
+        }
+
+        if (row < a.length  && col < a[0].length - 1)
+            return cntTrueReg(a, row, col+1, true, count);
+        if (col == a[0].length - 1)
+            return cntTrueReg(a, row+1, 0, true, count);
+        
+        return count;
     }
 
     /**

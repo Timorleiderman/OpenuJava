@@ -18,26 +18,27 @@ public class Ex13StudentTester
         System.out.println();
         System.out.println("********** Question 3**********\n");
         System.out.println();
-        Password p = new Password(5);
-        String getPassword=p.getPassword();
-        String findPassword= Ex13.findPassword(p,5);
-        System.out.println("getPassword returns: "+getPassword);
+        int n = 2;
+        Password p = new Password(n);
+        String getPassword = p.getPassword();
+        String findPassword= Ex13.findPassword(p, n);
+        System.out.println("getPassword returns: "+ getPassword);
         System.out.println("findPassword returns: "+findPassword);
         System.out.println();
         System.out.println("********** Question 4**********\n");
         System.out.println();
         boolean[][] mat = {
-                {false,false,false,false,true},
+                {true,false,false,false,true},
                 {false,true,true,true,false},
                 {false,false,true,true,false},
                 {true,false,false,false,false},
-                {true,true,false,false,false},
+                {true,true,false,false,true},
             };
         System.out.println ("Checking method cntTrueReg with the matrix:\n");
         printMat (mat);
         int studentCntRegResult=Ex13.cntTrueReg(mat);
         System.out.println();
-        System.out.println("Result is: "+studentCntRegResult);
+        System.out.println("Result is: "+ studentCntRegResult);
 
     }
 

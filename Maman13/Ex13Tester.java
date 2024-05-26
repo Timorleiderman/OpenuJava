@@ -2,6 +2,8 @@ import java.util.Random;
 
 public class Ex13Tester
 {
+    private static final int PASSWORD_LENGTH = 3;
+    private static final int Q3_NUM_OF_TRYS = 5;
     public static void main(String[] args){
 
         System.out.println ("********** Question 1 **********\n");
@@ -17,16 +19,28 @@ public class Ex13Tester
 
 
         System.out.println ("********** Question 3 **********\n");
-        int n = 5;
-        for (int i=0; i<990000; i++) {
-            
-            Password p = new Password(n);
+
+        for (int i=0; i < Q3_NUM_OF_TRYS; i++) {
+            Password p = new Password(PASSWORD_LENGTH);
             String getPassword = p.getPassword();
-            // System.out.println(getPassword);
-            String findPassword = Ex13.findPassword(p, n);
-            // System.out.println(findPassword);
+            System.out.println(getPassword);
+            String findPassword = Ex13.findPassword(p, PASSWORD_LENGTH);
+            System.out.println(findPassword);
             
         }
+
+        System.out.println("********** Question 4**********\n");
+        System.out.println();
+        boolean[][] mat = {
+                {true,false,false,false,true},
+                {false,true,true,true,false},
+                {false,false,true,true,false},
+                {true,false,false,false,false},
+                {true,true,false,false,false},
+            };
+
+        System.out.println("Number of Regions: " + Ex13.cntTrueReg(mat));
+
         System.out.println("Done!!!");
     }
 
