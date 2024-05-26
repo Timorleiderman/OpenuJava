@@ -90,13 +90,28 @@ public class Ex13 {
         return water;
     }
 
+    /**
+     * publlic method that will call the recrusive private method to count all the regions in the matrix
+     * @param a boolean matrix represents the regions
+     * @return number of regions
+     */
     public static int cntTrueReg (boolean [][] a){
         return cntTrueReg(a, 0, 0, true, 0);
     }
 
-    public static int cntTrueReg (boolean [][] a, int row, int col, boolean countFlag, int count){
-
-        System.out.println("This is row,col" + row + "," + col);
+    /**
+     * recrusive method that will go over all the matrix cells and will mark each region
+     * this method will change the value of each place in the matrix to false and will count when entering to a new region
+     * Time complexity O(rows*columns) = O(n*n) = O(n^2)
+     * Space complexity O(1)
+     * @param a boolean matrix represents the regions
+     * @param row row index
+     * @param col column index
+     * @param countFlag flag to count the specific index or not
+     * @param count the number of regions
+     * @return count
+     */
+    private static int cntTrueReg (boolean [][] a, int row, int col, boolean countFlag, int count){
 
         if (row == a.length-1 && col == a[0].length -1)
             return (a[row][col] && countFlag) ? 1: 0;
@@ -105,33 +120,44 @@ public class Ex13 {
 
             a[row][col] = BEEN_HERE;
 
-            if (countFlag)
+            if (countFlag) {
+                // count the index
                 count++;
-
+            }
+            
+            // look up and dont count if connected
             if (row - 1 >= 0 && a[row - 1][col]) {
                 return cntTrueReg(a, row - 1, col, false, count);
             }
+            // look down and dont count if connected
             if (row + 1 < a.length - 1 && a[row + 1][col]) {
                 return cntTrueReg(a, row + 1, col, false, count);
             }
+            // look right and dont count if connected
             if (col - 1 >= 0 && a[row][col - 1]) {
                 return cntTrueReg(a, row, col - 1, false, count);
             }
+            // look left and dont count if connected
             if (col + 1 < a[0].length - 1 && a[row][col + 1]) {
                 return cntTrueReg(a, row, col + 1,  false, count);
             }
         }
 
-        if (row < a.length  && col < a[0].length - 1)
+        if (row < a.length  && col < a[0].length - 1) {
+            // jump to next cell in the row
             return count + cntTrueReg(a, row, col+1, true, 0);
-        if (col == a[0].length - 1)
+        }
+        if (col == a[0].length - 1) {
+            // jump to next row and start from first cell
             return count + cntTrueReg(a, row+1, 0, true, 0);
+        }
         
         return count;
     }
 
     /**
      * it will call the private method to recrusivvly find the password
+     * 
      * @param p - Password .class object with isPassword method to check if the guess is correct
      * @param length - length of the password
      * @return password String found
@@ -144,7 +170,12 @@ public class Ex13 {
      * This method will call recrusivly the search index method with a counter parameter to count the number of calls
      * the counter is to prevent stck overflow for large strings
      * this code can only work with string up to 5 charecters 
+     * for 6 charecter string you will need to run it with -Xss16m
      * for more charecters you will need to increese the stack size
+     * 
+     * Time complexity O(n) 
+     * Space complexity O(1)
+     * 
      * @param p - Password .class object with isPassword method to check if the guess is correct
      * @param length - length of the password
      * @param idx - string index represent the needed string to be generated
@@ -185,6 +216,9 @@ public class Ex13 {
     /**
      * recrusive method to create string with the length given
      * for very large string it will have stuck overfow
+     * Time complexity O(n) 
+     * Space complexity O(1)
+     * 
      * @param length - length of the password
      * @param idx - index that represents the guess
      * @return string that represents the index
