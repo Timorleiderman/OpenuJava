@@ -123,9 +123,9 @@ public class Ex13 {
         }
 
         if (row < a.length  && col < a[0].length - 1)
-            return cntTrueReg(a, row, col+1, true, count);
+            return count + cntTrueReg(a, row, col+1, true, 0);
         if (col == a[0].length - 1)
-            return cntTrueReg(a, row+1, 0, true, count);
+            return count + cntTrueReg(a, row+1, 0, true, 0);
         
         return count;
     }
