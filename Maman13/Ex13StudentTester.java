@@ -25,7 +25,7 @@ public class Ex13StudentTester
         System.out.println("getPassword returns: "+ getPassword);
         System.out.println("findPassword returns: "+findPassword);
         System.out.println();
-        System.out.println("********** Question 4**********\n");
+        System.out.println("********** Question 4 **********\n");
         System.out.println();
         boolean[][] mat = {
                 {true,false,false,false,true},
