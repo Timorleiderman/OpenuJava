@@ -96,7 +96,7 @@ public class Ex13 {
      * @return number of regions
      */
     public static int cntTrueReg (boolean [][] a){
-        return cntTrueReg(a, 0, 0, 0);
+        return cntTrueReg(a, 0, 0);
     }
 
     /**
@@ -111,24 +111,32 @@ public class Ex13 {
      * @param count the number of regions
      * @return count
      */
-    private static int cntTrueReg (boolean [][] a, int row, int col, int count){
+    private static int cntTrueReg(boolean [][] a, int row, int col){
 
-        if ( row <= a.length-1 && col <= a[0].length -1 && a[row][col] ) {
+        // base case to exit when pass last row
+        if (row == a.length)
+            return 0;
+        // go to next line if reached end of coulumn
+        if (col == a[0].length)
+            return cntTrueReg(a, row + 1, 0);
+        // if true mark all neighbors and self to false, add one to recrusion and continue next to next cell
+        if (a[row][col]) {
             cleanNeighbors(a, row, col);
-            count++;
-            
+            return 1 + cntTrueReg(a, row, col + 1);
         }
-        if (row < a.length  && col < a[0].length - 1) {
-            // jump to next cell in the row
-            return count + cntTrueReg(a, row, col+1, 0);
-        } else if (col == a[0].length - 1) {
-            // jump to next row and start from first cell
-            return count + cntTrueReg(a, row+1, 0, 0);
-        }
-        
-        return count;
+
+        return cntTrueReg(a, row, col + 1);
     }
 
+    /**
+     * recrusive method to mark current cell and all neighbor cells to false
+     * this method will not check if the index are in range 
+     * the caller to this method check if row and col are valid
+     * 
+     * @param a boolean matrix represents the regions
+     * @param row row index
+     * @param col column index
+     */
     private static void cleanNeighbors(boolean [][] a, int row, int col) {
 
         a[row][col] = BEEN_HERE;
