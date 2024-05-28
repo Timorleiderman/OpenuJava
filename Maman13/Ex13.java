@@ -13,10 +13,12 @@ public class Ex13 {
     private static final boolean BEEN_HERE = false;
     /**
      * ********** Question 1 **********
-     *  like binery search compare even index if the even index and nex are the same the number is on the right
-     *  if the even index and the next are not the same the number is on the left
+     *  like binery search compare even index if the even index and next index are the same the number is on the right side
+     *  if the even index and the next index are not the same the number is on the left side
+     *  
      *  Time complexity O(log n)
      *  Space complexity O(1)
+     * 
      * @param a non empty input array with one integer that not appear twice in a row
      * @return the single int that was found
      */
@@ -25,14 +27,15 @@ public class Ex13 {
         int left = 0;
         int right = a.length - 1;
         int mid;
+        // two pointers
         while (left < right) {
             mid = left + (right - left) / 2;
 
-            if (mid %2 == 1)
+            if (mid % 2 == 1)
                 mid--;
             
             if (a[mid] == a[mid+1])
-                left = mid+2;
+                left = mid + 2; // move by two because we know that the next index is the same
             else
                 right = mid;
         }
@@ -42,10 +45,13 @@ public class Ex13 {
 
     /**
      * ********** Question 2 **********
+     * 
      * this function will iterate for each tower finding the max tower to the left and to the right
      * then i will add to the total water sum the minimal tower found less the the hight of the current tower
+     * 
      * Time complexity O(n*n) = O(n^2)
      * Space complexity O(1)
+     * 
      * @param a array of towers hights positive integers non zero
      * @return water volume to fill
      */
@@ -80,75 +86,7 @@ public class Ex13 {
     }
 
     /**
-     * publlic method that will call the recrusive private method to count all the regions in the matrix
-     * The recrusive method will go over all the matrix cells and will count and clear each region 
-     * this method will change the value of each place in the matrix to false and will count when entering to a new region
-     * 
-     * Time complexity O(rows*columns) = O(n*n) = O(n^2)
-     * Space complexity O(1)
-     * 
-     * @param a boolean matrix represents the regions
-     * @return number of regions
-     */
-    public static int cntTrueReg(boolean [][] a){
-        return cntTrueReg(a, 0, 0);
-    }
-
-    /**
-     * @param a boolean matrix represents the regions
-     * @param row row index
-     * @param col column index
-     * @param countFlag flag to count the specific index or not
-     * @param count the number of regions
-     * @return count
-     */
-    private static int cntTrueReg(boolean [][] a, int row, int col){
-
-        // base case to exit when pass last row
-        if (row == a.length)
-            return 0;
-        // go to next line if reached end of coulumn
-        if (col == a[0].length)
-            return cntTrueReg(a, row + 1, 0);
-        // if true mark all neighbors and self to false, add one to recrusion and continue next to next cell
-        if (a[row][col]) {
-            cleanNeighbors(a, row, col);
-            return 1 + cntTrueReg(a, row, col + 1);
-        }
-
-        return cntTrueReg(a, row, col + 1);
-    }
-
-    /**
-     * recrusive method to mark current cell and all neighbor cells to false
-     * this method will not check if the index are in range 
-     * the caller to this method check if row and col are valid
-     * 
-     * @param a boolean matrix represents the regions
-     * @param row row index
-     * @param col column index
-     */
-    private static void cleanNeighbors(boolean [][] a, int row, int col) {
-
-        a[row][col] = BEEN_HERE;
-        // look up and dont count if connected
-        if (row - 1 >= 0 && a[row - 1][col]) {
-            cleanNeighbors(a, row - 1, col);
-        }
-        // look down and dont count if connected
-        if (row + 1 < a.length && a[row + 1][col]) {
-            cleanNeighbors(a, row + 1, col);
-        }
-        // look right and dont count if connected
-        if (col - 1 >= 0 && a[row][col - 1]) {
-            cleanNeighbors(a, row, col - 1);
-        }
-        // look left and dont count if connected
-        if (col + 1 < a[0].length && a[row][col + 1]) {
-            cleanNeighbors(a, row, col + 1);
-        }
-    }
-    /**
+     * ********** Question 3 **********
      * it will call the private method to recrusivly find the password
      * The recrusive private method will try all english alphabet strings with the given length 
      * it will count the number of calls for the recrusion depth to prevent stack overflow
@@ -222,6 +160,79 @@ public class Ex13 {
             return "";
         char suffix = (char) ('a' + idx % ALPHABET_LENGTH);
         return suffix + generatePassword(length - 1, idx / ALPHABET_LENGTH);
+    }
+
+
+     /**
+     * ********** Question 4 **********
+     * 
+     * publlic method that will call the recrusive private method to count all the regions in the matrix
+     * The recrusive method will go over all the matrix cells and will count and clear each region 
+     * this method will change the value of each place in the matrix to false and will count when entering to a new region
+     * 
+     * Time complexity O(rows*columns) = O(n*n) = O(n^2)
+     * Space complexity O(1)
+     * 
+     * @param a boolean matrix represents the regions
+     * @return number of regions
+     */
+    public static int cntTrueReg(boolean [][] a){
+        return cntTrueReg(a, 0, 0);
+    }
+
+    /**
+     * @param a boolean matrix represents the regions
+     * @param row row index
+     * @param col column index
+     * @param countFlag flag to count the specific index or not
+     * @param count the number of regions
+     * @return count
+     */
+    private static int cntTrueReg(boolean [][] a, int row, int col){
+
+        // base case to exit when pass last row
+        if (row == a.length)
+            return 0;
+        // go to next line if reached end of coulumn
+        if (col == a[0].length)
+            return cntTrueReg(a, row + 1, 0);
+        // if true mark all neighbors and self to false, add one to recrusion and continue next to next cell
+        if (a[row][col]) {
+            cleanNeighbors(a, row, col);
+            return 1 + cntTrueReg(a, row, col + 1);
+        }
+
+        return cntTrueReg(a, row, col + 1);
+    }
+
+    /**
+     * recrusive method to mark current cell and all neighbor cells to false
+     * this method will not check if the index are in range 
+     * the caller to this method check if row and col are valid
+     * 
+     * @param a boolean matrix represents the regions
+     * @param row row index
+     * @param col column index
+     */
+    private static void cleanNeighbors(boolean [][] a, int row, int col) {
+
+        a[row][col] = BEEN_HERE;
+        // look up and dont count if connected
+        if (row - 1 >= 0 && a[row - 1][col]) {
+            cleanNeighbors(a, row - 1, col);
+        }
+        // look down and dont count if connected
+        if (row + 1 < a.length && a[row + 1][col]) {
+            cleanNeighbors(a, row + 1, col);
+        }
+        // look right and dont count if connected
+        if (col - 1 >= 0 && a[row][col - 1]) {
+            cleanNeighbors(a, row, col - 1);
+        }
+        // look left and dont count if connected
+        if (col + 1 < a[0].length && a[row][col + 1]) {
+            cleanNeighbors(a, row, col + 1);
+        }
     }
 
 }   
