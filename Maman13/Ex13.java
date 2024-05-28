@@ -1,4 +1,10 @@
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+/**
+ * Maman13 Exersize 
+ * 
+ * @author (Timor Leiderman) 
+ * @version (2024)
+ */
+
 
 public class Ex13 {
     
