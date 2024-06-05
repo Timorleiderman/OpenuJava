@@ -1,13 +1,35 @@
 public class StudentsTester
 {
-    public static void main()
+    public static void main(String [] args)
     {
+        System.out.println("\n\n=========  Question 1 =========\n\n");
         IntListTwo l1 = new IntListTwo();
         l1._head = null;
-        l1.addToEnd(10);
-        l1.addToEnd(10);
+        l1.addToEnd(15);
+        l1.addToEnd(19);
+        l1.addToEnd(21);
+        l1.addToEnd(13);
+        l1.addToEnd(14);
+        l1.addToEnd(30);
+        l1.addToEnd(23);
+        l1.addToEnd(16);
+
+        System.out.println(l1.toString());
         int tempI = l1.win();
-        boolean tempB = l1.betterWhat(1);
+
+        System.out.println(tempI);
+        
+        System.out.println("\n\n=========  Question 2 =========\n\n");
+        
+        boolean tempB = l1.what(1);
+        tempB = l1.what(15);
+        tempB = l1.what(57);
+        tempB = l1.what(82);
+
+        tempB = l1.betterWhat(1);
+        tempB = l1.betterWhat(15);
+        tempB = l1.betterWhat(57);
+        tempB = l1.betterWhat(82);
 
         IntListTwo l2 = new IntListTwo();
         l2._head = null;
@@ -16,18 +38,7 @@ public class StudentsTester
         tempI = l1.longestCommonSublist(l2);
         tempI = l1.maxEqualValue();
 
-        System.out.println("\n============================\n" +
-        "If you see this message,\n" +
-        "it means your software worked fine with this tester,\n" +
-        "which only means you wrote all the expected methods\n" +
-        "with the right interface.\n" +
-        "It DOES NOT MEAN your software does exactly what it is\n" +
-        "expected to do.\n" +
-        "To check that, you will have to write your own tester\n" +
-        "which must include all sorts of scenarios.\n" +
-        "The bugs your tester doesn't find - will be found\n" +
-        "by your instructor's tester, and will cost you\n" +
-        "points in your grade.");
+        System.out.println("====================");
     
     }
 }
