@@ -111,6 +111,7 @@ public class IntListTwo
 
         int sum = node.getNum();
         IntNodeTwo temp = node;
+        // will skip a single element each time
         while (temp != null && temp.getNext() != null) {
             sum += temp.getNum();
             temp = temp.getNext().getNext();
@@ -202,12 +203,15 @@ public class IntListTwo
         while (begin != _tail && end != null) {
 
             while (currentSum > num && begin != _tail) {
+                // if currecnt sum is bigger then we need 
+                // to move the begin pointer and subract it from the sum
                 currentSum -= begin.getNum();
                 begin = begin.getNext();
                 i++;
             }
 
             if (currentSum == num) {
+                // found
                 jj = j -1;
                 System.out.println("between " + i + " and " + jj);
                 return true;
@@ -222,30 +226,78 @@ public class IntListTwo
         return false;
     }
     
+    /**
+     * this will call the recrusive method to find the longest common sub list
+     * the sub list dont have to be consecutive
+     * @param list2 the linked list to compare to
+     * @return the length of the longest sub list
+     */
     public int longestCommonSublist(IntListTwo list2)
     {
-        // write your code here
         return longestCommonSublist(_head, list2._head, _head);
     }
 
+    /**
+     * recrusive method to find to longest sub list with 3 pointers
+     * the first pointer is apointer to the first linked list
+     * the seconf pointer is a pointer to the second likned list
+     * we compare first two values of the linked list if they are the same so we move all pointers to the next cell
+     * if they are not the same we will move only the first pointer until we reach to the end
+     * when the first pointer reches the end we need to go back to the refrence pointer and move the second pointer to the next cell
+     * each time the pointers are equal it will accumulate the value and recrusivly call again
+     * @param node1 the first linked list
+     * @param node2 the second linked list
+     * @param node1Ref the refernce to the first linked list
+     * @return the length of the sub linked list
+     */
     private int longestCommonSublist(IntNodeTwo node1, IntNodeTwo node2, IntNodeTwo node1Ref)
     {
         // write your code here
         if (node2 == null || node1Ref == null)
             return 0;
 
-        if (node1 == null)
+        if (node1 == null) {
+            // reached to the end of the first list now need to go back to ref and move node2 next
             return longestCommonSublist(node1Ref, node2.getNext(), node1Ref.getNext());
+        }
 
-        if (node1.getNum() == node2.getNum())
+        if (node1.getNum() == node2.getNum()) // found move all
             return 1 + longestCommonSublist(node1.getNext(), node2.getNext(), node1.getNext());
 
         return longestCommonSublist(node1.getNext(), node2, node1Ref);
     }
 
+    /**
+     * the method will calculate the longest consecutive list with equal values
+     * it will call the private recrusive method
+     * @return longest consecutive sub list length
+     */
     public int maxEqualValue()
     {
-        // write your code here
-        return 0;
+        return maxEqualValue(_head.getNext(), _head.getNum(), 1, 1);
+    }
+
+    /**
+     * recrusive method to calculate the max consecutive sub list
+     * 
+     * @param node current working node
+     * @param val the current value to compare
+     * @param cnt current counter
+     * @param max the max value until this point 
+     * @return the max
+     */
+    private int maxEqualValue(IntNodeTwo node, int val, int cnt, int max)
+    {
+        if (node == null)
+            return max;
+
+        if (node.getNum() == val) { // found
+            cnt ++;
+            max = Math.max(max, cnt);
+            return maxEqualValue(node.getNext(), val, cnt, max);
+        }
+
+        return maxEqualValue(node.getNext(), node.getNum(), 1, max);
+
     }
 }
