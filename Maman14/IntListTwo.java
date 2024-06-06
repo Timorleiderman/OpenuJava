@@ -225,7 +225,22 @@ public class IntListTwo
     public int longestCommonSublist(IntListTwo list2)
     {
         // write your code here
-        return 0;
+        return longestCommonSublist(_head, list2._head, _head);
+    }
+
+    private int longestCommonSublist(IntNodeTwo node1, IntNodeTwo node2, IntNodeTwo node1Ref)
+    {
+        // write your code here
+        if (node2 == null || node1Ref == null)
+            return 0;
+
+        if (node1 == null)
+            return longestCommonSublist(node1Ref, node2.getNext(), node1Ref.getNext());
+
+        if (node1.getNum() == node2.getNum())
+            return 1 + longestCommonSublist(node1.getNext(), node2.getNext(), node1.getNext());
+
+        return longestCommonSublist(node1.getNext(), node2, node1Ref);
     }
 
     public int maxEqualValue()
