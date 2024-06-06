@@ -176,33 +176,48 @@ public class IntListTwo
         return false;
     }
 
+    /**
+     * finds the sum of a sub linked list that will sum to num
+     * if it finds the sum equal to num it will print to stdout
+     * between ## and ##
+     * otherwise it will print 
+     * No 
+     * 
+     * Time complexity O(n)
+     * Space complexity O(1)
+     * 
+     * @param num the sum of the sub linked list to search
+     * @return true if found a sub linked list with sum equal to num
+     */
     public boolean betterWhat (int num)
     {
-        IntNodeTwo start = _head;
+        IntNodeTwo begin =_head;
         IntNodeTwo end = _head;
+
         int currentSum = 0;
         int i = 0;
         int j = 0;
-        
-        while (end != null) {
-            currentSum += end.getNum();
+        int jj = 0;
 
-            while (currentSum > num && start != end) {
-                currentSum -= start.getNum();
-                start = start.getNext();
+        while (begin != _tail && end != null) {
+
+            while (currentSum > num && begin != _tail) {
+                currentSum -= begin.getNum();
+                begin = begin.getNext();
                 i++;
             }
 
             if (currentSum == num) {
-                System.out.println("between " + i + " and " + j);
+                jj = j -1;
+                System.out.println("between " + i + " and " + jj);
                 return true;
             }
-            
+
+            currentSum += end.getNum();
             end = end.getNext();
             j++;
-                
-        }
 
+        }
         System.out.println("No ");
         return false;
     }
