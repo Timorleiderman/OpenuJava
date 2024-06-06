@@ -34,23 +34,23 @@ public class StudentsTester
         if (tempB)
             System.out.println("Correct");
         else
-            System.out.println(" Somthing went wrong with 15");
+            System.out.println("Somthing went wrong with 15");
 
         tempB = l0.what(57);
         if (tempB)
             System.out.println("Correct");
         else
-            System.out.println(" Somthing went wrong with 57");
+            System.out.println("Somthing went wrong with 57");
 
         tempB = l0.what(82);
         if (tempB)
             System.out.println("Correct");
         else
-            System.out.println(" Somthing went wrong with 82");
+            System.out.println("Somthing went wrong with 82");
 
         tempB = l0.betterWhat(1);
         if (tempB)
-            System.out.println(" Somthing went wrong with 1");
+            System.out.println("Somthing went wrong with 1");
         else
             System.out.println("Correct");
 
@@ -58,19 +58,19 @@ public class StudentsTester
         if (tempB)
             System.out.println("Correct");
         else
-            System.out.println(" Somthing went wrong with 15");
+            System.out.println("Somthing went wrong with 15");
 
         tempB = l0.betterWhat(57);
         if (tempB)
             System.out.println("Correct");
         else
-            System.out.println(" Somthing went wrong with 57");
+            System.out.println("Somthing went wrong with 57");
 
         tempB = l0.betterWhat(82);
         if (tempB)
             System.out.println("Correct");
         else
-            System.out.println(" Somthing went wrong with 82");
+            System.out.println("Somthing went wrong with 82");
 
 
         System.out.println("\n\n=========  Question 3 =========\n\n");
@@ -114,39 +114,66 @@ public class StudentsTester
         int tempC;
         tempC = l1.longestCommonSublist(l2);
         if (tempC == 4)
-            System.out.println( "L1 with L2 correct");
+            System.out.println("L1 with L2 correct");
         else
-            System.out.println( "L1 with L2 wrong not " + tempC);
+            System.out.println("L1 with L2 wrong not " + tempC);
 
         tempC = l2.longestCommonSublist(l3);
         if (tempC == 1)
-            System.out.println( "L2 with L3 correct");
+            System.out.println("L2 with L3 correct");
         else
-            System.out.println( "L3 with L3 wrong not " + tempC);
+            System.out.println("L3 with L3 wrong not " + tempC);
 
         tempC = l4.longestCommonSublist(l1);
         if (tempC == 0)
-            System.out.println( "L4 with L1 correct");
+            System.out.println("L4 with L1 correct");
         else
-            System.out.println( "L4 with L1 wrong not " + tempC);
+            System.out.println("L4 with L1 wrong not " + tempC);
 
         tempC = l4.longestCommonSublist(l2);
         if (tempC == 0)
-            System.out.println( "L4 with L2 correct");
+            System.out.println("L4 with L2 correct");
         else
-            System.out.println( "L4 with L2 wrong not " + tempC);
+            System.out.println("L4 with L2 wrong not " + tempC);
 
         tempC = l4.longestCommonSublist(l3);
         if (tempC == 0)
-            System.out.println( "L4 with L3 correct");
+            System.out.println("L4 with L3 correct");
         else
-            System.out.println( "L4 with L3 wrong not " + tempC);
+            System.out.println("L4 with L3 wrong not " + tempC);
 
 
         System.out.println("\n\n=========  Question 4 =========\n\n");
 
 
-        tempC = l1.maxEqualValue();
+        IntListTwo l5 = new IntListTwo();
+        IntListTwo l6 = new IntListTwo();
+
+        l5.addToEnd(-1);
+        l5.addToEnd(-1);
+        l5.addToEnd(-1);
+        l5.addToEnd(-3);
+        l5.addToEnd(-3);
+        l5.addToEnd(-3);
+        l5.addToEnd(-3);
+        l5.addToEnd(0);
+        l5.addToEnd(2);
+
+        l6.addToEnd(7);
+        l6.addToEnd(-9);
+        l6.addToEnd(-7);
+
+        int tempD = l5.maxEqualValue();
+        if (tempD == 4)
+            System.out.println("correct ");
+        else
+            System.out.println("L5 wrong not " + tempD);
+
+        tempD = l6.maxEqualValue();
+        if (tempD == 1)
+            System.out.println("correct ");
+        else
+            System.out.println("L6 wrong not " + tempD);
 
         System.out.println("====================");
     
