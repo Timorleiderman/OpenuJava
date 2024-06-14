@@ -1,5 +1,5 @@
 /**
- * Maman13 Exersize 
+ * Maman13 Exercise 
  * 
  * @author (Timor Leiderman) 
  * @version (2024)
