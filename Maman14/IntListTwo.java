@@ -13,6 +13,9 @@ public class IntListTwo
     // הסיבה לכך היא לצורך הבדיקה שלנו את העבודה שלכם.
     // השאירו הגדרה זאת כפי שהיא ואל תשנו אותה !
 
+    /**
+     * Empty constructor initialize _head and _tail to null
+     */
     public IntListTwo()
     {
         _head = null;
@@ -40,8 +43,8 @@ public class IntListTwo
     //the method return a String that represents the list
     /**
      * Returns a String that represents the list
-     * @return a String that represents the list in the fprmat:
-     * {first value, seconed bofore, ..., last value}
+     * @return a String that represents the list in the print format:
+     * {first value, second before, ..., last value}
      */
     public String toString()
     {
@@ -105,11 +108,13 @@ public class IntListTwo
         int oddSum = 0;
         int evenSum = 0;
         IntNodeTwo node = _head;
+        // list must be 2*n length
         while (node != null) { // calculate the even sum and the odd sum
             evenSum += node.getNum();
             oddSum += node.getNext().getNum();
             node = node.getNext().getNext();
         } // here we already know the winner but lets print it to stdout
+
         playWin(oddSum, evenSum);
         return Math.abs(evenSum - oddSum);
     }
@@ -127,7 +132,7 @@ public class IntListTwo
         IntNodeTwo right = _tail;
         boolean even = evenSum > oddSum;
 
-        while (left.getPrev() != right || right.getNext() != left) { // O(n) for printing to stdout
+        while (left.getPrev() != right || right.getNext() != left) {
 
             if (even) {
                 System.out.println("Amir Took " + left.getNum());
@@ -159,6 +164,7 @@ public class IntListTwo
             System.out.println("Tamar total: " + evenSum);
         }
     }
+
     /**
      * Calculate the sum from low node to high
      * 
@@ -171,7 +177,7 @@ public class IntListTwo
      * 
 
      */
-    private int f (int low, int high)
+    private int f(int low, int high)
     {
         int result = 0;
         IntNodeTwo temp = _head;
@@ -241,8 +247,8 @@ public class IntListTwo
         while (begin != _tail && end != null) {
 
             while (currentSum > num && begin != _tail) {
-                // if currecnt sum is bigger then we need 
-                // to move the begin pointer and subract it from the sum
+                // if current sum is bigger then we need 
+                // to move the begin pointer and subtract it from the sum
                 currentSum -= begin.getNum();
                 begin = begin.getNext();
                 i++;
@@ -265,8 +271,8 @@ public class IntListTwo
     }
     
     /**
-     * this will call the recrusive method to find the longest common sub list
-     * the sub list dont have to be consecutive
+     * this will call the recursive method to find the longest common sub list
+     * the sub list don't have to be consecutive
      * @param list2 the linked list to compare to
      * @return the length of the longest sub list
      */
@@ -276,16 +282,16 @@ public class IntListTwo
     }
 
     /**
-     * recrusive method to find to longest sub list with 3 pointers
-     * the first pointer is apointer to the first linked list
-     * the seconf pointer is a pointer to the second likned list
+     * recursive method to find to longest sub list with 3 pointers
+     * the first pointer is a pointer to the first linked list
+     * the second pointer is a pointer to the second linked list
      * we compare first two values of the linked list if they are the same so we move all pointers to the next cell
      * if they are not the same we will move only the first pointer until we reach to the end
-     * when the first pointer reches the end we need to go back to the refrence pointer and move the second pointer to the next cell
-     * each time the pointers are equal it will accumulate the value and recrusivly call again
+     * when the first pointer reaches the end we need to go back to the reference pointer and move the second pointer to the next cell
+     * each time the pointers are equal it will accumulate the value and recursively call again
      * @param node1 the first linked list
      * @param node2 the second linked list
-     * @param node1Ref the refernce to the first linked list
+     * @param node1Ref the reference to the first linked list
      * @return the length of the sub linked list
      */
     private int longestCommonSublist(IntNodeTwo node1, IntNodeTwo node2, IntNodeTwo node1Ref)
@@ -307,7 +313,7 @@ public class IntListTwo
 
     /**
      * the method will calculate the longest consecutive list with equal values
-     * it will call the private recrusive method
+     * it will call the private recursive method
      * @return longest consecutive sub list length
      */
     public int maxEqualValue()
@@ -316,7 +322,7 @@ public class IntListTwo
     }
 
     /**
-     * recrusive method to calculate the max consecutive sub list
+     * recursive method to calculate the max consecutive sub list
      * 
      * @param node current working node
      * @param val the current value to compare
