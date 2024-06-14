@@ -16,7 +16,7 @@ public class StudentsTester
         l0.addToEnd(16);
         
         int tempA = l0.win();
-        if (tempA == 7)
+        if (tempA == 5)
             System.out.println("Correct");
         else
             System.out.println("Somthing went wrong with l0 win this shouldent be " + tempA);
