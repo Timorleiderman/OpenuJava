@@ -1,5 +1,5 @@
 /**
- * Maman14 Exersize 
+ * Maman14 Exercise 
  * 
  * @author (Timor Leiderman) 
  * @version (2024)
@@ -65,6 +65,14 @@ public class IntListTwo
         return s;
     }
 
+    /**
+     * calculate the length of the list
+     * 
+     * Time complexity O(n)
+     * Space complexity O(1)
+     * 
+     * @return the length of the liked list
+     */
     public int size()
     {
         IntNodeTwo temp;
@@ -81,45 +89,76 @@ public class IntListTwo
      * if we mark all even nodes in black and all odd ones in white 
      * if the first player starts from the right (took the odd coin) the second player can take only the second and the 2*n coin
      * so the strategy will be to take all the even or all the odds
-     * for wining the first needs to take the bigger sum
+     * for wining the first needs to take the bigger sum of even or odds indexes 
      * 
      * Time complexity O(n)
      * Space complexity O(1)
      * 
      * 
-     * @return the difference betwen the odd sum and the even sum
+     * @return the absolute difference between the odd sum and the even sum
      */
     public int win()
     {
-        return Math.abs(sumSkip(_head) - sumSkip(_head.getNext()));
-    }
+        if (_head == null)
+            return 0; // list is empty
 
+        int oddSum = 0;
+        int evenSum = 0;
+        IntNodeTwo node = _head;
+        while (node != null) { // calculate the even sum and the odd sum
+            evenSum += node.getNum();
+            oddSum += node.getNext().getNum();
+            node = node.getNext().getNext();
+        } // here we already know the winner but lets print it to stdout
+        playWin(oddSum, evenSum);
+        return Math.abs(evenSum - oddSum);
+    }
     /**
+     * prints to stdout the game
      * 
-     * this method will calculate the sum of all nodes but will skip one each time
-     * 
-     * Time complexity O(n)
+     *  Time complexity O(n)
      * Space complexity O(1)
      * 
-     * @param node the node to start from
-     * @return the sum of all nodes when skips one each time
+     * @param oddSum sum of the odd nodes in the list
+     * @param evenSum sum of all the even nodes in the list
      */
-    private int sumSkip(IntNodeTwo node) {
+    private void playWin(int oddSum, int evenSum) {
+        IntNodeTwo left = _head;
+        IntNodeTwo right = _tail;
+        boolean even = evenSum > oddSum;
 
-        if (node == null)
-            return 0;
+        while (left.getPrev() != right || right.getNext() != left) { // O(n) for printing to stdout
 
-        int sum = node.getNum();
-        IntNodeTwo temp = node;
-        // will skip a single element each time
-        while (temp != null && temp.getNext() != null) {
-            sum += temp.getNum();
-            temp = temp.getNext().getNext();
+            if (even) {
+                System.out.println("Amir Took " + left.getNum());
+                left = left.getNext();
+            }
+            else {
+                System.out.println("Amir Took " + right.getNum());
+                right = right.getPrev();
+            }
+
+            if (left.getNum() > right.getNum())
+            {
+                System.out.println("Tamar Took " + left.getNum());
+                left = left.getNext();
+            }
+            else
+            {
+                System.out.println("Tamar Took " + right.getNum());
+                right = right.getPrev();
+            }
         }
 
-        return sum;
+        System.out.println("Final Score:");
+        if (even) {
+            System.out.println("Amir total: " + evenSum);
+            System.out.println("Tamar total: " +  oddSum);
+        } else {
+            System.out.println("Amir total: " + oddSum);
+            System.out.println("Tamar total: " + evenSum);
+        }
     }
-
     /**
      * Calculate the sum from low node to high
      * 
@@ -152,14 +191,13 @@ public class IntListTwo
      * between ## and ##
      * otherwise it will print 
      * No 
-     * n + (n-1) + (n-2) .... 1 = n * ( n + 1 ) / 2
-     * Time complexity O(n*n) = O(n^2)
+     * Time complexity O(n^3)
      * Space complexity O(1)
      * 
      * @param num the sum of the sub linked list to search
      * @return true if found a sub linked list with sum equal to num
      */
-    public boolean what (int num)
+    public boolean what(int num)
     {        
         int listSize = size();
         for (int i = 0; i < listSize; i++)
