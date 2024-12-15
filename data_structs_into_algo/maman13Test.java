@@ -26,23 +26,59 @@ public class maman13Test {
         System.out.println();
     }
     
+    static boolean validateArr(int arr[], int expected[]){
+        // System.out.print("Actual:   ");
+        // printArray(arr);
+        // System.out.print("Expected: ");
+        // printArray(expected);
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != expected[i]){
+                System.out.println("Error idx: " + i + " -> " + arr[i] + " != " + expected[i]);
+                return false;
+            }
+         }
+        return true;
+    }
+
+    
     public static void main(String[] args){
-        System.out.println("Hello World"); // printing each array element
         
+        int[] test_arr =          {27, 17,  3, 16, 13, 10, 1, 5,  7, 12, 4, 8, 9, 0};
+        int[] test_arr_expected = {27, 17, 10, 16, 13,  9,  1, 5, 7, 12, 4,  8, 3, 0};
+
+        DHeap heap2 = new DHeap(2);
+        DHeap heap3 = new DHeap(3);
+        DHeap heap4 = new DHeap(4);
+        DHeap heap5 = new DHeap(5);
+
+
+        heap2.buildDMaxHeap(test_arr);
+
+        if (validateArr(test_arr, test_arr_expected))
+            System.out.println(">>> Test 1 passed");
+        else
+            System.out.println(">>> Test 1 failed");
+
+
         int[] A = new int[A_LENGTH];
-        // int[] A = {27, 17, 3, 16, 13, 10,1 ,5,7,12,4,8,9,0};
-        int[] B = new int[B_LENGTH];
-        int[] C = new int[C_LENGTH];
-        
         fillRandArr(A);
+        int[] B = new int[B_LENGTH];
         fillRandArr(B);
+        int[] C = new int[C_LENGTH];
         fillRandArr(C);
 
+        
+        printArray(A); // print the array
+        heap4.buildDMaxHeap(A);
         printArray(A);
-      
-        HeapSort heap = new HeapSort();
-        heap.sort(A);
-        printArray(A);
+        if (heap4.validHeap(A))
+            System.out.println(">>> Test 2 passed");
+        else
+            System.out.println(">>> Test 2 failed");
+
+        
+        
 
 
     }
