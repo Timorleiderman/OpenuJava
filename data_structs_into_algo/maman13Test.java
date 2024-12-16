@@ -9,7 +9,8 @@ public class maman13Test {
     private static final int B_LENGTH = 100;
     private static final int C_LENGTH = 200;
 
-    static void fillRandArr(int arr[]) {
+
+    static void fillRandonm(int arr[]) {
 
         Random rd = new Random(); // creating Random object
 
@@ -27,10 +28,6 @@ public class maman13Test {
     }
     
     static boolean validateArr(int arr[], int expected[]){
-        // System.out.print("Actual:   ");
-        // printArray(arr);
-        // System.out.print("Expected: ");
-        // printArray(expected);
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] != expected[i]){
@@ -41,45 +38,55 @@ public class maman13Test {
         return true;
     }
 
+    static void testDHeap(int d, int array_size){
+        System.out.print(">>> Test d-heap with d: " + d + " array size: " + array_size);
+        DHeap heap = new DHeap(d);
+        int[] arr = new int[array_size];
+        fillRandonm(arr);
+        heap.sort(arr);
+        heap.validHeap(arr);
+        System.out.println(" - comparisons: " + heap.compare_cnt + " assignments: " + heap.assign_cnt);
+    }
     
     public static void main(String[] args){
         
+        // simple test just to check if buildDMaxHeap and heapify works
         int[] test_arr =          {27, 17,  3, 16, 13, 10, 1, 5,  7, 12, 4, 8, 9, 0};
         int[] test_arr_expected = {27, 17, 10, 16, 13,  9,  1, 5, 7, 12, 4,  8, 3, 0};
-
-        DHeap heap2 = new DHeap(2);
-        DHeap heap3 = new DHeap(3);
-        DHeap heap4 = new DHeap(4);
-        DHeap heap5 = new DHeap(5);
-
-
-        heap2.buildDMaxHeap(test_arr);
-
+        // initialize the d-heap 2
+        DHeap heap_test = new DHeap(2);
+        
+        heap_test.buildDMaxHeap(test_arr);
         if (validateArr(test_arr, test_arr_expected))
             System.out.println(">>> Test 1 passed");
         else
             System.out.println(">>> Test 1 failed");
 
-
-        int[] A = new int[A_LENGTH];
-        fillRandArr(A);
-        int[] B = new int[B_LENGTH];
-        fillRandArr(B);
-        int[] C = new int[C_LENGTH];
-        fillRandArr(C);
-
-        
-        printArray(A); // print the array
-        heap4.buildDMaxHeap(A);
-        printArray(A);
-        if (heap4.validHeap(A))
+        if (heap_test.validHeap(test_arr) && heap_test.validHeap(test_arr_expected))
             System.out.println(">>> Test 2 passed");
         else
             System.out.println(">>> Test 2 failed");
 
-        
-        
 
 
+        // maman13 tests initialize with random numbers and count number of comparisons and assignments on array numbers
+        // test with d = 2, 3, 4, 5 on array sizes A_LENGTH, B_LENGTH, C_LENGTH
+        testDHeap(2, A_LENGTH);
+        testDHeap(2, B_LENGTH);
+        testDHeap(2, C_LENGTH);
+
+        testDHeap(3, A_LENGTH);
+        testDHeap(3, B_LENGTH);
+        testDHeap(3, C_LENGTH);
+
+        testDHeap(4, A_LENGTH);
+        testDHeap(4, B_LENGTH);
+        testDHeap(4, C_LENGTH);
+
+        testDHeap(5, A_LENGTH);
+        testDHeap(5, B_LENGTH);
+        testDHeap(5, C_LENGTH);
+
+        
     }
 }
