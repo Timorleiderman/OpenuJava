@@ -37,14 +37,14 @@ class DHeap {
 
         for (int i = arr.length - 1; i > 0; i--) {
             swap(arr, 0, i);
-            heapify(arr, 0, i);
+            heapify(arr, 0, i); // heap size changes each iteration
         }        
 
     }
 
 
     /**
-     * get the k^th child index
+     * get the k^th child index 0-based
      * @param i - node index
      * @param k - k^th child
      * @return the index of the left child
@@ -67,13 +67,13 @@ class DHeap {
      * heapify for a d-heap it will heapify the given array
      * @param arr - array
      * @param i - index
-     * @param n - size to heapify (the number of)
+     * @param n - size to heapify - during sorting heapsize reduces
      */
     public void heapify(int arr[], int i, int n) {
-        
+ 
         int largest_idx = i;
-        for (int k = 0; k < _d; k++) {
-            int ch_idx = child(k, i);
+        for (int k = 1; k <= _d; k++) { //iterate over all children 
+            int ch_idx = child(k-1, i); // k-1 for 0 based index
             if (ch_idx < n && arr[ch_idx] > arr[largest_idx]) {
                 compare_cnt++;
                 largest_idx = ch_idx;
@@ -204,26 +204,14 @@ public class Main {
         else
             System.out.println(">>> Test 2 failed");
 
-
-
         // maman13 tests initialize with random numbers and count number of comparisons and assignments on array numbers
         // test with d = 2, 3, 4, 5 on array sizes A_LENGTH, B_LENGTH, C_LENGTH
-        testDHeap(2, A_LENGTH);
-        testDHeap(2, B_LENGTH);
-        testDHeap(2, C_LENGTH);
-
-        testDHeap(3, A_LENGTH);
-        testDHeap(3, B_LENGTH);
-        testDHeap(3, C_LENGTH);
-
-        testDHeap(4, A_LENGTH);
-        testDHeap(4, B_LENGTH);
-        testDHeap(4, C_LENGTH);
-
-        testDHeap(5, A_LENGTH);
-        testDHeap(5, B_LENGTH);
-        testDHeap(5, C_LENGTH);
-
+        for (int i= 2; i <= 5; i++) {
+            testDHeap(i, A_LENGTH);
+            testDHeap(i, B_LENGTH);
+            testDHeap(i, C_LENGTH);
+        }
+        
         
     }
 }
