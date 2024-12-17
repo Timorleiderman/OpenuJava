@@ -20,10 +20,6 @@ class DHeap {
         _d = d;
     }
 
-    private void initCounters() {
-        compare_cnt = 0;
-        assign_cnt = 0;
-    }
     /**
      * given an array, sort it in ascending order
      * @param arr
@@ -33,7 +29,9 @@ class DHeap {
         if (arr == null || arr.length == 0) {
             return; // Handle null or empty array
         }
-        initCounters();
+        //initizlize counters on each sorting
+        compare_cnt = 0;
+        assign_cnt = 0;
 
         buildDMaxHeap(arr);
 
@@ -56,7 +54,7 @@ class DHeap {
     }
 
     /**
-     * build a max d-heap
+     * build a max d-heap using heapify
      */
     public void buildDMaxHeap(int arr[]) {
         int n = arr.length;
@@ -66,10 +64,10 @@ class DHeap {
     }
 
     /**
-     * d-heapify the array
+     * heapify for a d-heap it will heapify the given array
      * @param arr - array
      * @param i - index
-     * @param n - size
+     * @param n - size to heapify (the number of)
      */
     public void heapify(int arr[], int i, int n) {
         
@@ -129,7 +127,10 @@ public class Main {
     private static final int B_LENGTH = 100;
     private static final int C_LENGTH = 200;
 
-
+    /**
+     * 
+     * @param arr input array to be filled with random numbers in the range of 0..RAND_RANGE
+     */
     static void fillRandonm(int arr[]) {
 
         Random rd = new Random(); // creating Random object
@@ -139,6 +140,10 @@ public class Main {
          }
     }
     
+    /**
+     * print a given array
+     * @param arr
+     */
     static void printArray(int arr[])
     {
         int n = arr.length;
@@ -147,6 +152,12 @@ public class Main {
         System.out.println();
     }
     
+    /**
+     * validate that arr and expected are the same by iterating over all values O(n)
+     * @param arr
+     * @param expected
+     * @return true is same
+     */
     static boolean validateArr(int arr[], int expected[]){
 
         for (int i = 0; i < arr.length; i++) {
@@ -158,6 +169,12 @@ public class Main {
         return true;
     }
 
+    /**
+     * test case for maman for given d and array size it will create a random array and sort it
+     * it will print the comparisosn and assigments of the sort algorithem
+     * @param d - number of children per node
+     * @param array_size - size of array to create and sort
+     */
     static void testDHeap(int d, int array_size){
         System.out.print(">>> Test d-heap with d: " + d + " array size: " + array_size);
         DHeap heap = new DHeap(d);
