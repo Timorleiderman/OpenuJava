@@ -47,4 +47,5 @@ axes[1].set_ylim([min_assignments - margin, max_assignments + margin])
 
 # Tight layout for better spacing
 plt.tight_layout()
-plt.show()
+fig.savefig('analysis.png')
+# plt.show()

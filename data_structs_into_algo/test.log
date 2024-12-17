@@ -1,14 +1,14 @@
 >>> Test 1 passed
 >>> Test 2 passed
->>> Test d-heap with d: 2 array size: 50 - comparisons: 257 assignments: 702
->>> Test d-heap with d: 2 array size: 100 - comparisons: 677 assignments: 1755
->>> Test d-heap with d: 2 array size: 200 - comparisons: 1656 assignments: 4113
->>> Test d-heap with d: 3 array size: 50 - comparisons: 211 assignments: 552
->>> Test d-heap with d: 3 array size: 100 - comparisons: 512 assignments: 1257
->>> Test d-heap with d: 3 array size: 200 - comparisons: 1259 assignments: 2931
->>> Test d-heap with d: 4 array size: 50 - comparisons: 185 assignments: 474
->>> Test d-heap with d: 4 array size: 100 - comparisons: 469 assignments: 1086
->>> Test d-heap with d: 4 array size: 200 - comparisons: 1149 assignments: 2460
->>> Test d-heap with d: 5 array size: 50 - comparisons: 167 assignments: 438
->>> Test d-heap with d: 5 array size: 100 - comparisons: 424 assignments: 987
->>> Test d-heap with d: 5 array size: 200 - comparisons: 1019 assignments: 2199
+>>> Test d-heap with d: 2 array size: 50 - comparisons: 273 assignments: 765
+>>> Test d-heap with d: 2 array size: 100 - comparisons: 686 assignments: 1764
+>>> Test d-heap with d: 2 array size: 200 - comparisons: 1641 assignments: 4068
+>>> Test d-heap with d: 3 array size: 50 - comparisons: 202 assignments: 546
+>>> Test d-heap with d: 3 array size: 100 - comparisons: 506 assignments: 1272
+>>> Test d-heap with d: 3 array size: 200 - comparisons: 1238 assignments: 2889
+>>> Test d-heap with d: 4 array size: 50 - comparisons: 187 assignments: 474
+>>> Test d-heap with d: 4 array size: 100 - comparisons: 487 assignments: 1101
+>>> Test d-heap with d: 4 array size: 200 - comparisons: 1123 assignments: 2478
+>>> Test d-heap with d: 5 array size: 50 - comparisons: 160 assignments: 429
+>>> Test d-heap with d: 5 array size: 100 - comparisons: 444 assignments: 1008
+>>> Test d-heap with d: 5 array size: 200 - comparisons: 1031 assignments: 2238
